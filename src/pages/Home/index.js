@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import reading from '../assets/reading.svg';
+import reading from '../../assets/reading.svg';
 
 export default function Home() {
   return (
