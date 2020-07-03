@@ -1,0 +1,49 @@
+*{
+    background-color: dodgerblue;
+}
+
+
+.title{
+    display: flex;
+    width: 100%;
+    padding-left: 28%;
+    align-items: center;
+    font-size: 70px;
+    font-family: Londrina Solid;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56px;
+    color: #E0EAFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.caixa{
+    display: flex;
+    align-items: center;
+    height:30px;
+    padding-left: 30%;
+    padding-top: 20%;
+}
+
+.codigo{
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height:20px;
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: #E0EAFF;
+    background: rgba(85, 82, 230, 0.4);
+    
+}
+
+
+.img{
+    width: 100%;
+    height: 400px;
+}
+
