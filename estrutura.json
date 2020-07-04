@@ -2,22 +2,22 @@
     "textos": [
         {
             "id": 1,
-            "titulo": "O Nome do Vento",
-            "descricao": "With supporting text below as a natural lead-in to additional content. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi libero distinctio numquam, quasi, quo vero modi voluptatum",
-            "paragrafos": [
+            "title": "O name do Vento",
+            "description": "With supporting text below as a natural lead-in to additional content. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi libero distinctio numquam, quasi, quo vero modi voluptatum",
+            "paragraphs": [
                 {
                     "id": 1,
-                    "titulo": "wsrlgj n arwogjawrohj",
-                    "conteudo": "vjlsrbpeatjhpáetmkp´jetka",
-                    "imagem": "",
-                    "opcao": [
+                    "title": "wsrlgj n arwogjawrohj",
+                    "content": "vjlsrbpeatjhpáetmkp´jetka",
+                    "image": "",
+                    "option": [
                         {
-                            "id_paragrafo": 5,
-                            "nome": "Correr"
+                            "id_paragraph": 5,
+                            "name": "Correr"
                         },
                         {
-                            "id_paragrafo": 6,
-                            "nome": "Enfrentar"
+                            "id_paragraph": 6,
+                            "name": "Enfrentar"
                         }
                     ]
                 },
@@ -26,22 +26,22 @@
         },
         {
             "id": 2,
-            "titulo": "O Nome do Homem Macaco",
-            "descricao": "que corre atras de mim",
-            "paragrafos": [
+            "title": "O name do Homem Macaco",
+            "description": "que corre atras de mim",
+            "paragraphs": [
                 {
                     "id": 1,
-                    "titulo": "wsrlgj n arwogjawrohj",
-                    "conteudo": "vjlsrbpeatjhpáetmkp´jetka",
-                    "imagem": "",
-                    "opcao": [
+                    "title": "wsrlgj n arwogjawrohj",
+                    "content": "vjlsrbpeatjhpáetmkp´jetka",
+                    "image": "",
+                    "option": [
                         {
-                            "id_paragrafo": 5,
-                            "nome": "Correr"
+                            "id_paragraph": 5,
+                            "name": "Correr"
                         },
                         {
-                            "id_paragrafo": 6,
-                            "nome": "Enfrentar"
+                            "id_paragraph": 6,
+                            "name": "Enfrentar"
                         }
                     ]
                 },
@@ -50,22 +50,22 @@
         },
         {
             "id": 3,
-            "titulo": "O Nome do Homem Macaco",
-            "descricao": "que corre atras de mim",
-            "paragrafos": [
+            "title": "O name do Homem Macaco",
+            "description": "que corre atras de mim",
+            "paragraphs": [
                 {
                     "id": 1,
-                    "titulo": "wsrlgj n arwogjawrohj",
-                    "conteudo": "vjlsrbpeatjhpáetmkp´jetka",
-                    "imagem": "",
-                    "opcao": [
+                    "title": "wsrlgj n arwogjawrohj",
+                    "content": "vjlsrbpeatjhpáetmkp´jetka",
+                    "image": "",
+                    "option": [
                         {
-                            "id_paragrafo": 5,
-                            "nome": "Correr"
+                            "id_paragraph": 5,
+                            "name": "Correr"
                         },
                         {
-                            "id_paragrafo": 6,
-                            "nome": "Enfrentar"
+                            "id_paragraph": 6,
+                            "name": "Enfrentar"
                         }
                     ]
                 },
@@ -74,22 +74,22 @@
         },
         {
             "id": 4,
-            "titulo": "O Nome do Homem Macaco",
-            "descricao": "que corre atras de mim",
-            "paragrafos": [
+            "title": "O name do Homem Macaco",
+            "description": "que corre atras de mim",
+            "paragraphs": [
                 {
                     "id": 1,
-                    "titulo": "wsrlgj n arwogjawrohj",
-                    "conteudo": "vjlsrbpeatjhpáetmkp´jetka",
-                    "imagem": "",
-                    "opcao": [
+                    "title": "wsrlgj n arwogjawrohj",
+                    "content": "vjlsrbpeatjhpáetmkp´jetka",
+                    "image": "",
+                    "option": [
                         {
-                            "id_paragrafo": 5,
-                            "nome": "Correr"
+                            "id_paragraph": 5,
+                            "name": "Correr"
                         },
                         {
-                            "id_paragrafo": 6,
-                            "nome": "Enfrentar"
+                            "id_paragraph": 6,
+                            "name": "Enfrentar"
                         }
                     ]
                 }
