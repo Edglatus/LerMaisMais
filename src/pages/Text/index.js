@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import { TextCapsule, ButtonCapsule, ChoiceButton } from './styles'
+import { ButtonCapsule, ChoiceButton } from './styles'
 import { Container } from '../../components/Container';
+import { TextCapsule } from '../../components/TextCapsule';
 
 class Text extends Component{
     state={
@@ -67,6 +69,8 @@ class Text extends Component{
                         {options[1].name}
                     </ChoiceButton>
                 </ButtonCapsule>
+
+                <Link to={'/list'}>Voltar à Lista de Livros</Link>
             </Container>
         );
     }
