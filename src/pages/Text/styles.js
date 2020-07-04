@@ -4,6 +4,7 @@ export const ButtonCapsule = styled.div`
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
+    max-width: 650px;
 
     display: flex;
     flex-direction: row;
