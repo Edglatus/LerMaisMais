@@ -9,7 +9,8 @@ export const TextCapsule = styled.div`
     margin: 10px;
 
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;   
+    transition: .2s; 
 
     h1 {
         padding: 15px;
@@ -37,6 +38,12 @@ export const TextCapsule = styled.div`
 
         font-size: 20px;
         text-align: center;
+    }
+
+    :hover{
+        transform: scale(1.02);
+        box-shadow: 0px 0px 5px 0px darkblue;
+        cursor:pointer;
     }
 
 `;
