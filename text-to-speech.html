@@ -17,17 +17,16 @@
         var txtInput = document.querySelector('#txtInput');
         var voiceList = document.querySelector('#voiceList');
         var btnSpeak = document.querySelector('#btnSpeak');
-        var synth = window.speechSynthesis;
+        var synth = window.speechSynthesis; // obtemos uma referência ao controlador SpeechSynthesis usando window.speechSynthesis.
         var voices = [];
 
         PopulateVoices();
         if(speechSynthesis !== undefined){
-            speechSynthesis.onvoiceschanged = PopulateVoices;
+            speechSynthesis.onvoiceschanged = PopulateVoices; //propriedade da SpeechSynthesisinterface representa um manipulador de eventos que será executado quando a lista de SpeechSynthesisVoiceobjetos que seriam retornados pelo SpeechSynthesis.getVoices()método for alterada (quando o evento de alteração de voz for acionado.)
         }
 
         btnSpeak.addEventListener('click', ()=> {
-            var toSpeak = new SpeechSynthesisUtterance(txtInput.value);
-            var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
+            var toSpeak = new SpeechSynthesisUtterance(txtInput.value); //interface da Web Speech API representa uma solicitação de fala. Ele contém o conteúdo que o serviço de fala deve ler e informações sobre como lê-lo (por exemplo, idioma, afinação e volume).
             voices.forEach((voice)=>{
                 if(voice.name === selectedVoiceName){
                     toSpeak.voice = voice;
@@ -37,7 +36,7 @@
         });
 
         function PopulateVoices(){
-            voices = synth.getVoices();
+            voices = synth.getVoices(); //recuperamos uma lista das vozes disponíveis usando SpeechSynthesis.getVoices()
             var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
             voiceList.innerHTML = '';
             voices.forEach((voice)=>{
