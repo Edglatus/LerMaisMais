@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 
 import api from "../../services/api";
 import { Container } from '../../components/Container';
@@ -19,7 +18,7 @@ export default function List({ history }) {
   }, []);
 
   return (
-    <Container>
+    <Container unlimited={true}>
       <TextCapsule className="mb-5">
         <h1>Ler++</h1>
       </TextCapsule>
@@ -33,7 +32,8 @@ export default function List({ history }) {
             </p>
           </TextCapsule>
         ))}
-        <TextCapsule>
+
+        <TextCapsule onClick={() => { history.push(`livro/1`) }}>
           <h2>O Nome do Vento</h2>
           <p>
             With supporting text below as a natural lead-in to additional
@@ -42,10 +42,8 @@ export default function List({ history }) {
             voluptatum
         </p>
         </TextCapsule>
+        
       </ListWrapper>
-
-
-
     </Container>
   );
 }
