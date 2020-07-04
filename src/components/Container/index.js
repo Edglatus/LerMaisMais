@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
@@ -8,5 +8,9 @@ export const Container = styled.div`
     align-self: auto;
     
     max-width: 800px;
+    ${ props => props.unlimited && 
+        css`
+            max-width: 1600px;
+    `}
     margin: 5vh auto;
-`
+`;
