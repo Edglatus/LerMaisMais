@@ -4,13 +4,15 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     
     max-width: 700px;
-    margin: 80px auto;
+    margin: 0px auto;
+    height: 100vh;
 
     h1 {
-        width: 100%;
+        margin-top: 15vh;
+        width: 100vw;
         text-align: center;
         font-family: "Londrina Solid", 'fallback', 'Arial Narrow', Arial, sans-serif;
         font-style: normal;
@@ -21,7 +23,8 @@ export const Container = styled.div`
     }
 
     .img{
-        width: 100%;
+        max-width: 90%;
+        padding: 20px 30px 0px 30;
     }
 
 `;

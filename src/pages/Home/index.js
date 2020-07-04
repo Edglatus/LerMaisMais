@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
+import { withRouter  } from 'react-router-dom';
 import reading from '../../assets/reading.svg';
 
 import { Container, Form } from './styles';
 
-export default class Home extends Component{
+class Home extends Component{
     state = {
         typedLogin: ''
     };
 
 
-    submissionHandler()
+    submissionHandler(e)
     {
-        console.log('submitted');
+        e.preventDefault();
+        this.props.history.push('/list');
     }
 
     render() {
@@ -20,7 +22,7 @@ export default class Home extends Component{
         return (
             <Container>
                 <h1>Ler++</h1>
-                <Form onSubmit={this.submissionHandler}>
+                <Form onSubmit={(e) => this.submissionHandler(e)}>
                 <input type="text" placeholder="Insira seu código" value={typedLogin}/>
                 <button type="submit">Entrar</button>
                 </Form>
@@ -30,3 +32,4 @@ export default class Home extends Component{
     };
 }
 
+export default withRouter(Home);
