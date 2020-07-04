@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+
 import api from "../../services/api";
-// import { Container } from './styles';
+import { Container } from '../../components/Container';
+import { TextCapsule } from '../../components/TextCapsule';
+import { ListWrapper } from './styles';
 
 export default function List() {
   const [textos, setTextos] = useState([]);
@@ -15,141 +19,81 @@ export default function List() {
   }, []);
 
   return (
-    <div className="container">
-      <div class="alert alert-info text-center mt-4 mb-5" role="alert">
-        <h1 className="m-0">Ler++</h1>
-      </div>
-      <div class="row">
-        <div className="col-md-6">
-          <div class="card mb-4">
-            <div class="card-header text-center">
-              {textos.map((texto) => (
-                <li key={texto.Titulo}>
-                  <p>Titulo: </p>
-                  {texto.Titulo}
-                </li>
-              ))}
-            </div>
-            <div class="card-body">
-              <p class="card-text text-light">
-                {textos.map((texto) => (
-                  <li key={texto.descricao}>
-                    <p>Descricao: </p>
-                    {texto.descricao}
-                  </li>
-                ))}
-              </p>
-            </div>
-            <div class="card-footer text-muted">
-              <div className="d-flex justify-content-between">
-                <small>Progresso</small>
-                <small>50%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div class="card mb-4">
-            <div class="card-header text-center">O nome do vento</div>
-            <div class="card-body">
-              <p class="card-text text-light">
-                With supporting text below as a natural lead-in to additional
-                content. Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Animi libero distinctio numquam, quasi, quo vero modi
-                voluptatum
-              </p>
-            </div>
-            <div class="card-footer text-muted">
-              <div className="d-flex justify-content-between">
-                <small>Progresso</small>
-                <small>50%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <Container>
+        <TextCapsule>
+            <h1>Ler++</h1>
+        </TextCapsule>
 
-      <div class="row">
-        <div className="col-md-6 col-xl-4">
-          <div class="card mb-4">
-            <div class="card-header text-center">O nome do vento</div>
-            <div class="card-body">
-              <p class="card-text text-light">
-                With supporting text below as a natural lead-in to additional
-                content. Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Animi libero distinctio numquam, quasi, quo vero modi
-                voluptatum
-              </p>
-            </div>
-            <div class="card-footer text-muted">
-              <div className="d-flex justify-content-between">
-                <small>Progresso</small>
-                <small>50%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-6 col-xl-4">
-          <div class="card mb-4">
-            <div class="card-header text-center">O nome do vento</div>
-            <div class="card-body">
-              <p class="card-text text-light">
-                With supporting text below as a natural lead-in to additional
-                content. Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Animi libero distinctio numquam, quasi, quo vero modi
-                voluptatum
-              </p>
-            </div>
-            <div class="card-footer text-muted">
-              <div className="d-flex justify-content-between">
-                <small>Progresso</small>
-                <small>50%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div className="col-md-6 col-xl-4">
-          <div class="card mb-4">
-            <div class="card-header text-center">O nome do vento</div>
-            <div class="card-body">
-              <p class="card-text text-light">
-                With supporting text below as a natural lead-in to additional
-                content. Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Animi libero distinctio numquam, quasi, quo vero modi
-                voluptatum
-              </p>
-            </div>
-            <div class="card-footer text-muted">
-              <div className="d-flex justify-content-between">
-                <small>Progresso</small>
-                <small>50%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-6 col-xl-4">
-          <div class="card mb-4">
-            <div class="card-header text-center">O nome do vento</div>
-            <div class="card-body">
-              <p class="card-text text-light">
-                With supporting text below as a natural lead-in to additional
-                content. Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Animi libero distinctio numquam, quasi, quo vero modi
-                voluptatum
-              </p>
-            </div>
-            <div class="card-footer text-muted">
-              <div className="d-flex justify-content-between">
-                <small>Progresso</small>
-                <small>50%</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        {textos.map((texto) => (        
+            <ListWrapper>
+                <TextCapsule>   
+                    <Link to={`/livro/${texto.id}`}>
+                        <h2>{texto.title}</h2>
+                        <p>
+                            {texto.descricao}
+                        </p>
+                    </Link>
+                </TextCapsule>
+            </ListWrapper>
+        ))}
+        <ListWrapper>
+            <TextCapsule>   
+                <Link to={`/livro/1`}>
+                    <h2>O Nome do Vento</h2>
+                    <p>
+                        With supporting text below as a natural lead-in to additional
+                        content. Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Animi libero distinctio numquam, quasi, quo vero modi
+                        voluptatum
+                    </p>
+                </Link>
+            </TextCapsule>        
+            <TextCapsule>   
+                <h2>O Nome do Vento</h2>
+                <p>
+                    With supporting text below as a natural lead-in to additional
+                    content. Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Animi libero distinctio numquam, quasi, quo vero modi
+                    voluptatum
+                </p>
+            </TextCapsule>
+            <TextCapsule>   
+                <h2>O Nome do Vento</h2>
+                <p>
+                    With supporting text below as a natural lead-in to additional
+                    content. Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Animi libero distinctio numquam, quasi, quo vero modi
+                    voluptatum
+                </p>
+            </TextCapsule>
+            <TextCapsule>   
+                <h2>O Nome do Vento</h2>
+                <p>
+                    With supporting text below as a natural lead-in to additional
+                    content. Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Animi libero distinctio numquam, quasi, quo vero modi
+                    voluptatum
+                </p>
+            </TextCapsule>
+            <TextCapsule>   
+                <h2>O Nome do Vento</h2>
+                <p>
+                    With supporting text below as a natural lead-in to additional
+                    content. Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Animi libero distinctio numquam, quasi, quo vero modi
+                    voluptatum
+                </p>
+            </TextCapsule>
+            <TextCapsule>   
+                <h2>O Nome do Vento</h2>
+                <p>
+                    With supporting text below as a natural lead-in to additional
+                    content. Lorem, ipsum dolor sit amet consectetur adipisicing
+                    elit. Animi libero distinctio numquam, quasi, quo vero modi
+                    voluptatum
+                </p>
+            </TextCapsule>
+        </ListWrapper>
+    </Container>
   );
 }

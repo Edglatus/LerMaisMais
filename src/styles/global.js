@@ -8,8 +8,8 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
-    html, body, #root {
-        min-height: 100%;
+    body, #root {
+        min-height: 100vh;
     }
 
     body {
@@ -24,6 +24,15 @@ export default createGlobalStyle`
 
     button {
         cursor: pointer;
+    }
+
+    a {
+        color: #dcdad8;
+        text-decoration: none;
+    }
+
+    a, p {
+        font-size: 24px;
     }
 
 `;
