@@ -27,3 +27,11 @@ export const ChoiceButton = styled.button`
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.7);
 `;
+
+export const ImageContainer = styled.div`
+    margin: 0 30px;
+    img { 
+        max-width: 500px;
+        width:100%;
+    }
+`;
