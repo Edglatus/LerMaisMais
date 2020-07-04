@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 
 import { ButtonCapsule, ChoiceButton } from './styles'
 import { Container } from '../../components/Container';
 import { TextCapsule } from '../../components/TextCapsule';
 
-class Text extends Component{
-    state={
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+Modal.setAppElement('#root')
+
+let subtitle;
+
+class Text extends Component {
+
+
+    state = {
+        modalIsOpen: true,
+        text: this.props.location.state.texto,
         currentParagraph_id: 0,
         paragraphs: [
             {
@@ -14,7 +34,7 @@ class Text extends Component{
                 title: "Capítulo 1",
                 content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam sem. Curabitur faucibus arcu et posuere facilisis. Nulla pulvinar efficitur sapien, eget pharetra velit vestibulum at. Nam pharetra, nibh sed gravida semper, nunc nulla consectetur nibh, sit amet luctus turpis mauris non nisi. ",
                 image: "",
-                option:[
+                option: [
                     {
                         id_paragraph: 5,
                         name: "Correr"
@@ -29,29 +49,42 @@ class Text extends Component{
     }
 
     //  Lifecycle Hooks
-    componentDidMount()
-    {
+    componentDidMount() {
         //  Pegar a Estória do LocalStorage
         //  Se não estiver, Pega da API e guarda no LocalStorage
         //  Se não encontrar, Retorna Erro
+        // console.log(this.props.location.state.texto);
+
+    }
+
+    openModal() {
+        this.setState({ modalIsOpen: true })
+    }
+
+    closeModal() {
+        // setIsOpen(false);
+    }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        // subtitle.style.color = '#f00';
     }
 
     //  Handlers
-    choiceHandler(choice)
-    {
+    choiceHandler(choice) {
 
     }
 
-    render()
-    {
+    render() {
         const { currentParagraph_id, paragraphs } = this.state;
         const currentParagraph = paragraphs.find(p => p.id === currentParagraph_id);
         const options = currentParagraph.option;
+        const { text } = this.state;
 
-        return(
+        return (
             <Container>
                 <TextCapsule>
-                    <h1>O Nome Do Vento</h1>
+                    <h1>{text.titulo}</h1>
                 </TextCapsule>
 
                 <TextCapsule>
@@ -71,7 +104,17 @@ class Text extends Component{
                 </ButtonCapsule>
 
                 <Link to={'/list'}>Voltar à Lista de Livros</Link>
-            </Container>
+                {/* <Modal
+                    isOpen={this.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <h1>teste modal</h1>
+                </Modal> */}
+
+            </Container >
         );
     }
 }
