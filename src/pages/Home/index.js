@@ -22,7 +22,12 @@ class Home extends Component {
             <Container>
                 <h1 className="logo">Ler++</h1>
                 <Form onSubmit={(e) => this.submissionHandler(e)}>
-                    <input type="text" placeholder="Insira seu código" value={typedLogin} />
+                    <input
+                        type="text"
+                        placeholder="Insira seu código"
+                        onChange={(e) => this.setState({ typedLogin: e.target.value })}
+                        value={typedLogin}
+                    />
                     <button type="submit">Entrar</button>
                 </Form>
                 <img className="img" src={reading} alt="Ler++" />
