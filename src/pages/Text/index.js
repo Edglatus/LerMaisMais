@@ -52,7 +52,11 @@ class Text extends Component {
         }
         
         if(this.state.text)
-        this.setState({loading: false});
+        {
+            if(this.state.paragraphs[0].image)
+                this.switchModal();
+            this.setState({loading: false});
+        }
         else   
             console.log("Deu ruim");
         }
