@@ -12,5 +12,5 @@ export const Container = styled.div`
         css`
             max-width: 1600px;
     `}
-    margin: 5vh auto;
+    margin: 2vh auto;
 `;

@@ -2,7 +2,7 @@
     "textos": [
         {
             "id": 0,
-            "title": "O tesouro de um pirata",
+            "title": "O Tesouro de um Pirata",
             "description": "Um jovem vivencia o desafio de encontrar um tesouro perdido. Após isso ele precisa decidir qual a melhor forma de agir para poder encontrá-lo",
             "paragraphs": [
                 {
@@ -96,7 +96,7 @@
                     "id": 0,
                     "title": "Echoes Parte 1",
                     "content": "Overhead the albatross \nHangs motionless upon the air\nAnd deep beneath the rolling waves\nIn labyrinths of coral caves\nAn echo of a distant time\nComes willowing across the sand\nAnd everything is green and submarine",
-                    "image": "https://pm1.narvii.com/6762/bca990974c87bb9d0439436c28c1198329317bddv2_hq.jpg",
+                    "image": "",
                     "option": [
                         {
                             "id_paragraph": 10,
