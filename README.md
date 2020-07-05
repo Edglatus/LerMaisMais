@@ -5,11 +5,13 @@ Uma aplicação web responsiva que visa fornecer um meio de fomento à leitura, 
 
 ## Como rodar o projeto:
 
-### `yarn `
-Rodar o comando yarn no prompt de comando para atualizar as dependências do projeto.
+### `yarn`
+### `npm install`
+Rodar o comando **yarn**, ou **npm install** no prompt de comando para atualizar as dependências do projeto.
 
 ### `yarn start`
-Para rodar é necessário executar o comando "yarn start" no prompt de comando. Este aciona tanto o servidor de mockup(JSON-server) quanto a aplicação em si.
+### `npm start`
+Para rodar é necessário executar o comando **yarn start**, ou **npm start** no prompt de comando. Este aciona tanto o servidor de mockup(JSON-server) quanto a aplicação em si.
 
 ### `HTTP://localhost:3000`
 A aplicação estará disponível no browser através do link http://localhost:3000
