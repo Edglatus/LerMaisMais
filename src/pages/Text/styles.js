@@ -20,14 +20,21 @@ export const ChoiceButton = styled.button`
     align-items: center;
     justify-content: center;
     
-    font-size: 25px;
+    font-size: 28px;
 
-    min-width: 120px;
+    min-width: 150px;
     padding: 5px 10px;
 
     border: 1px solid #555;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7); 
+    transition: .2s; 
+
+    :hover{
+        transform: scale(1.02);
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.6);
+        cursor:pointer;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -44,6 +51,7 @@ export const ImageContainer = styled.div`
     border-radius: '10px';
     width: 70%;
     height: 70%;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.6);
     
     img { 
         max-height: 90%;
@@ -74,6 +82,7 @@ export const ModalStyle = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        boxShadow: '10px 10px rgba(0, 0, 0, 0.6)',
     },
 
 };

@@ -12,6 +12,8 @@ export const TextCapsule = styled.div`
     flex-direction: column;   
     transition: .2s; 
 
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.4);
+
     h1 {
         padding: 15px;
         font-size: 40px;
@@ -42,7 +44,7 @@ export const TextCapsule = styled.div`
 
     :hover{
         transform: scale(1.02);
-        box-shadow: 0px 0px 5px 0px darkblue;
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.6);
         cursor:pointer;
     }
 
