@@ -121,7 +121,7 @@ class Text extends Component {
                 }
 
                 <TextCapsule>
-                    <h1>{ textTitle }</h1>
+                    <h2>{ textTitle }</h2>
                 </TextCapsule>
 
                 <TextCapsule>

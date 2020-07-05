@@ -20,7 +20,7 @@ export const ChoiceButton = styled.button`
     align-items: center;
     justify-content: center;
     
-    font-size: 28px;
+    font-size: 20px;
 
     min-width: 150px;
     padding: 5px 10px;
