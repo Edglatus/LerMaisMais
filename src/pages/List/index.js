@@ -26,23 +26,13 @@ export default function List({ history }) {
       <ListWrapper>
         {textos.map((texto) => (
           <TextCapsule onClick={() => { history.push('livro/', { texto }) }}>
-            <h2>{texto.titulo}</h2>
+            <h2>{texto.title}</h2>
             <p>
-              {texto.descricao}
+              {texto.description}
             </p>
           </TextCapsule>
         ))}
 
-        <TextCapsule onClick={() => { history.push(`livro/1`) }}>
-          <h2>O Nome do Vento</h2>
-          <p>
-            With supporting text below as a natural lead-in to additional
-            content. Lorem, ipsum dolor sit amet consectetur adipisicing
-            elit. Animi libero distinctio numquam, quasi, quo vero modi
-            voluptatum
-        </p>
-        </TextCapsule>
-        
       </ListWrapper>
     </Container>
   );
