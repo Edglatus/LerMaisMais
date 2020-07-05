@@ -25,7 +25,9 @@ export default function List({ history }) {
 
       <ListWrapper>
         {textos.map((texto) => (
-          <TextCapsule onClick={() => { history.push('livro/', { texto }) }}>
+          <TextCapsule key={texto.id} onClick={() => { 
+                history.push('livro/', { textTitle: texto.title, textID: texto.id 
+            }) }}>
             <h2>{texto.title}</h2>
             <p>
               {texto.description}
