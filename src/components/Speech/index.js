@@ -1,8 +1,8 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {IoMdVolumeHigh, IoMdPause} from 'react-icons/io';
-import { useSpeechSynthesis, speaking, cancel } from 'react-speech-kit';
+import { useSpeechSynthesis } from 'react-speech-kit';
  
 function SpeechComponent({ message }) 
 {
