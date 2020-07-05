@@ -4,30 +4,13 @@ import Modal from 'react-modal';
 
 import api from '../../services/api';
 
-import { ButtonCapsule, ChoiceButton, ImageContainer } from './styles'
+import { ButtonCapsule, ChoiceButton, ImageContainer, ModalStyle } from './styles'
 import { Container } from '../../components/Container';
 import { TextCapsule } from '../../components/TextCapsule';
 
-const customStyles = {
-    overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.75)'
-    },
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    },
-
-};
-
-Modal.setAppElement('#root')
-
 class Text extends Component {
     state = {
-        modalIsOpen: true,
+        modalIsOpen: false,
         textID: this.props.location.state.textID,
         textTitle: this.props.location.state.textTitle,
         text: {},
@@ -85,7 +68,11 @@ class Text extends Component {
         const nextParagraph = this.state.paragraphs.find(p => p.id === nextParagraphId);
 
         if(nextParagraph)
-        { this.setState({ currentParagraph_id: nextParagraphId }); }
+        { 
+            if(nextParagraph.image.length > 0)
+                this.switchModal();
+            this.setState({ currentParagraph_id: nextParagraphId }); 
+        }
     }
 
     render() {
@@ -103,39 +90,44 @@ class Text extends Component {
         }
         
         return (
-            <Container>
-                    <TextCapsule>
-                        <h1>{ textTitle }</h1>
-                    </TextCapsule>
+            <Container className='container'>
+                { modalIsOpen &&
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={this.switchModal}
+                            style={ModalStyle}
+                        >
+                            {currentParagraph?.image &&
+                            <ImageContainer><img src={currentParagraph?.image} alt="none" />
+                            </ImageContainer>}
+                        </Modal>
+                }
 
-                    <TextCapsule>
-                        { currentParagraph.title && <h2>{currentParagraph?.title}</h2>}
-                        <p>
-                            {currentParagraph?.content.split("\n").map((i,key) => {
-                                return <>{i}<br/> </>;
-                            })}
-                        </p>
-                    </TextCapsule>
+                <TextCapsule>
+                    <h1>{ textTitle }</h1>
+                </TextCapsule>
 
-                    <ButtonCapsule>
-                        {currentParagraph?.option?.map(o =>
-                                {return (
-                                    <ChoiceButton onClick={() => this.choiceHandler(o)}>
-                                        {o?.name}
-                                    </ChoiceButton>
-                                )}
+                <TextCapsule>
+                    { currentParagraph.title && <h2>{currentParagraph?.title}</h2>}
+                    <p>
+                        {currentParagraph?.content.split("\n").map((i,key) => {
+                            return <strong key={i}>{i}<br/> </strong>;
+                        })}
+                    </p>
+                </TextCapsule>
+
+                <ButtonCapsule>
+                    {currentParagraph?.option?.map(o =>
+                            {return (
+                                <ChoiceButton key={currentParagraph.title + o.name}
+                                    onClick={() => this.choiceHandler(o)}>
+                                    {o?.name}
+                                </ChoiceButton>
                             )}
-                    </ButtonCapsule>
+                        )}
+                </ButtonCapsule>
 
-                    <Link to={'/list'}>Voltar à Lista de Livros</Link>
-                    
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={this.switchModal}
-                        style={customStyles}
-                    >
-                        <ImageContainer><img src={currentParagraph?.image} alt="none" /></ImageContainer>
-                    </Modal>
+                <Link to={'/list'}>Voltar à Lista de Livros</Link>
             </Container >
         );
     }
