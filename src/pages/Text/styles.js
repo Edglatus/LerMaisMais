@@ -22,8 +22,8 @@ export const ChoiceButton = styled.button`
     
     font-size: 25px;
 
-    max-width: 40%;
-    padding: 5px 25px;
+    min-width: 120px;
+    padding: 5px 10px;
 
     border: 1px solid #555;
     border-radius: 10px;
@@ -31,9 +31,49 @@ export const ChoiceButton = styled.button`
 `;
 
 export const ImageContainer = styled.div`
-    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+    margin: 0;
+
+    
+    background-color: '#000';
+    border: '2px solid #555';
+    border-radius: '10px';
+    width: 70%;
+    height: 70%;
+    
     img { 
-        max-width: 500px;
-        width:100%;
+        max-height: 90%;
+        max-width: 90%;
     }
 `;
+
+export const ModalStyle = {
+    
+    overlay: {        
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    },
+    content: { 
+        backgroundColor: '#000',
+        top: '40%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        padding: '0',
+
+        width: '90%',
+        height: 'auto',
+        maxWidth: '600px',
+        maxHeight: '700px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+};
