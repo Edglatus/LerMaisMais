@@ -21,19 +21,19 @@ export default function List({ history }) {
   return (
     <Container unlimited={true}>
       <TextCapsule className="mb-5">
-        <h1>Ler++</h1>
+        <h1 className="logo">Ler++</h1>
       </TextCapsule>
 
       <ListWrapper>
         {textos.map((texto) => (
           <TextCapsule key={texto.id}>
             <div onClick={() => { history.push('livro/', { textTitle: texto.title, textID: texto.id }) }}>
-                <h2>{texto.title}</h2>
-                <p>
-                    {texto.description}
-                </p>
+              <h2>{texto.title}</h2>
+              <p>
+                {texto.description}
+              </p>
             </div>
-            <SpeechComponent message={texto.title + '. ' + texto.description}/>
+            <SpeechComponent message={texto.title + '. ' + texto.description} />
           </TextCapsule>
         ))}
 

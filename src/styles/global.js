@@ -48,4 +48,7 @@ export default createGlobalStyle`
         opacity: 0;
     }
 
+    .logo{
+        font-family: 'Londrina Solid', cursive;
+    }
 `;
