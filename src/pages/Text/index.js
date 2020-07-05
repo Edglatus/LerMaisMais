@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 
 import api from '../../services/api';
 
+import SpeechComponent from '../../components/Speech';
 import { ButtonCapsule, ChoiceButton, ImageContainer, ModalStyle } from './styles'
 import { Container } from '../../components/Container';
 import { TextCapsule } from '../../components/TextCapsule';
@@ -19,16 +20,15 @@ class Text extends Component {
         loading: true
     }
 
-    switchModal = this.switchModal.bind(this);
-
+    
     //  Lifecycle Hooks
     async componentDidMount() {
         const storedText = await localStorage.getItem(this.state.textTitle);
-
+        
         if(storedText)
         {
             const parsedText = JSON.parse(storedText)
-
+            
             this.setState({ 
                 text: parsedText, 
                 paragraphs: parsedText.paragraphs 
@@ -37,36 +37,32 @@ class Text extends Component {
         else
         {            
             const fetchedData = await api.get(`/textos/${this.state.textID}`);
-
+            
             if(fetchedData)
             {
                 const fetchedText = fetchedData.data;
-
+                
                 this.setState({ 
                     text: fetchedText,
                     paragraphs: fetchedText.paragraphs
                 });
-
+                
                 localStorage.setItem(this.state.textTitle, JSON.stringify(fetchedText));
             }
         }
-
+        
         if(this.state.text)
-            this.setState({loading: false});
+        this.setState({loading: false});
         else   
             console.log("Deu ruim");
-    }
-
-    switchModal(e) {
-        const switchTo = !this.state.modalIsOpen;
-        this.setState({modalIsOpen: switchTo});
-    }
-
+        }
+        
+        
     //  Handlers
     choiceHandler(choice) {
         const nextParagraphId = choice.id_paragraph;
         const nextParagraph = this.state.paragraphs.find(p => p.id === nextParagraphId);
-
+        
         if(nextParagraph)
         { 
             if(nextParagraph.image.length > 0)
@@ -74,12 +70,29 @@ class Text extends Component {
             this.setState({ currentParagraph_id: nextParagraphId }); 
         }
     }
+    switchModal(e) {
+        const switchTo = !this.state.modalIsOpen;
+        this.setState({modalIsOpen: switchTo});
+    }
+    switchModal = this.switchModal.bind(this);
+        
+    buildTextToSpeech(currentParagraph)
+    {
+        let tts = '';
+        tts += (currentParagraph?.title) ? currentParagraph.title + '. ' : '';
+        tts += currentParagraph?.content + '. ';
+        tts += currentParagraph?.option?.map(o =>
+            {return ( o.name + '. ' )});
+
+        return tts;
+    }
 
     render() {
         const { modalIsOpen, currentParagraph_id, paragraphs } = this.state;
         const currentParagraph = paragraphs?.find(p => p.id === currentParagraph_id);
         const { textTitle } = this.state;
-
+        const textToSpeech = this.buildTextToSpeech(currentParagraph);
+        
         if (this.state.loading)
         {
             return(
@@ -126,6 +139,8 @@ class Text extends Component {
                             )}
                         )}
                 </ButtonCapsule>
+
+                <SpeechComponent message={textToSpeech}/>
 
                 <Link to={'/list'}>Voltar à Lista de Livros</Link>
             </Container >
