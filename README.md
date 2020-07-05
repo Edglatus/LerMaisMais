@@ -14,5 +14,5 @@ Para rodar é necessário executar o comando **yarn start**, ou **npm start** no
 ### `HTTP://localhost:3000`
 A aplicação estará disponível no browser através do link http://localhost:3000
 
-
+Equipe:Bruno Augusto,Bruno Manhães Alves,Edgard Wagner,Matheus Almeida
 
