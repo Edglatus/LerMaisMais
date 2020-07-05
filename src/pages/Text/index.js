@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import api from '../../services/api';
 
 import SpeechComponent from '../../components/Speech';
-import { ButtonCapsule, ChoiceButton, ImageContainer, ModalStyle } from './styles'
+import { ButtonCapsule, ChoiceButton, ImageContainer, ModalStyle, TextContainer } from './styles'
 import { Container } from '../../components/Container';
 import { TextCapsule } from '../../components/TextCapsule';
 
@@ -19,7 +19,6 @@ class Text extends Component {
         paragraphs: [],
         loading: true
     }
-
     
     //  Lifecycle Hooks
     async componentDidMount() {
@@ -96,6 +95,7 @@ class Text extends Component {
         const currentParagraph = paragraphs?.find(p => p.id === currentParagraph_id);
         const { textTitle } = this.state;
         const textToSpeech = this.buildTextToSpeech(currentParagraph);
+        const currentOptions = currentParagraph?.option;
         
         if (this.state.loading)
         {
@@ -134,7 +134,7 @@ class Text extends Component {
                 </TextCapsule>
 
                 <ButtonCapsule>
-                    {currentParagraph?.option?.map(o =>
+                    {currentOptions.map(o =>
                             {return (
                                 <ChoiceButton key={currentParagraph.title + o.name}
                                     onClick={() => this.choiceHandler(o)}>
@@ -146,7 +146,7 @@ class Text extends Component {
 
                 <SpeechComponent message={textToSpeech}/>
 
-                <Link to={'/list'}>Voltar à Lista de Livros</Link>
+                <TextContainer><Link to={'/list'}>Voltar à Lista de Livros</Link></TextContainer>
             </Container >
         );
     }

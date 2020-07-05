@@ -29,6 +29,11 @@ export default createGlobalStyle`
     a {
         color: #dcdad8;
         text-decoration: none;
+
+        :hover {
+            color: #dcdad8;
+            text-decoration: none;
+        }
     }
 
     a, p {

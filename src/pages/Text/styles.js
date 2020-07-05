@@ -86,3 +86,7 @@ export const ModalStyle = {
     },
 
 };
+
+export const TextContainer = styled.div`
+    text-align: center;
+`

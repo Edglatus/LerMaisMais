@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 import api from "../../services/api";
 import SpeechComponent from '../../components/Speech';
@@ -20,9 +21,9 @@ export default function List({ history }) {
 
   return (
     <Container unlimited={true}>
-      <TextCapsule className="mb-5">
+      <Link to={'/'}><TextCapsule className="mb-5">
         <h1 className="logo">Ler++</h1>
-      </TextCapsule>
+      </TextCapsule></Link>
 
       <ListWrapper>
         {textos.map((texto) => (

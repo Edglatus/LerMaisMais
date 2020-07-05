@@ -9,7 +9,7 @@
                     "id": 0,
                     "title": "A Descoberta",
                     "content": "Era uma vez um jovem chamado Pedro, ele sempre sonhou em participar de grandes aventuras. Certo dia ele decidiu que iria buscar encontrar um navio pirata que era bastante famoso em sua região. Ao encontrar uma carta do seu avô ele:",
-                    "image": "https://lh5.googleusercontent.com/UBg_obKRmi9LtAuWOVk0grZdZylYAYasQ7tUE5Qw-LHczc_JC3Y31jy9DjpaEsFToOb6ArvtKqOPGTtWeXu3=w1366-h646-rw",
+                    "image": "https://i.imgur.com/NLRSL8E.png",
                     "option": [
                         {
                             "id_paragraph": 1,
@@ -25,7 +25,7 @@
                     "id": 1,
                     "title": "O Início de uma jornada",
                     "content": "Ao se reunirem, leram a carta e percebem que precisavam de chaves mágicas para encontrarem o navio pirata que estava cheio de ouro. Após iniciarem a procura por pistas seu amigo encontra um livro diário de um pirata.",
-                    "image": "https://lh3.google.com/u/0/d/11UqX6jAJONudUmkOqfmeMtLDKyiIOdVu=w1366-h646-iv1",
+                    "image": "https://i.imgur.com/6PiSngO.png",
                     "option": [
                         {
                             "id_paragraph": 2,
@@ -41,12 +41,8 @@
                     "id": 2,
                     "title": "Enfim, conseguimos!",
                     "content": "Eles encontraram um mapa, seguiram em busca do tesouro e encontraram.",
-                    "image": "https://lh3.google.com/u/0/d/1U39HxC1rWT1JZjLJB96B9vUUYXnsb66p=w1366-h646-iv1",
+                    "image": "https://i.imgur.com/AAVSouD.png",
                     "option": [
-                        {
-                            "id_paragraph": 0,
-                            "name": "Rever o tesouro de um pirata"
-                        },
                         {
                             "id_paragraph": 0,
                             "name": "Rever o tesouro de um pirata"
@@ -62,10 +58,6 @@
                         {
                             "id_paragraph": 0,
                             "name": "Rever o tesouro de um pirata"
-                        },
-                        {
-                            "id_paragraph": 0,
-                            "name": "Rever o tesouro de um pirata"
                         }
                     ]
                 },
@@ -75,10 +67,6 @@
                     "content": "Durante a procura de informações brigaram e abandonaram a meta.",
                     "image": "",
                     "option": [
-                        {
-                            "id_paragraph": 0,
-                            "name": "Rever o tesouro de um pirata"
-                        },
                         {
                             "id_paragraph": 0,
                             "name": "Rever o tesouro de um pirata"
@@ -211,7 +199,7 @@
         {
             "id": 2,
             "title": "O Nome do Vento",
-            "description": "Rothfuss conta história de Kvothe, dono da hospedaria Marco do Percurso - que leva uma vida pacata, em um vilarejo sem grandes agitações. Até o dia em que salva a vida de um cronista durante o ataque noturno de “criaturas sombrias” e o abriga em sua hospedaria. Conhecendo uma misteriosa história sobre Kvothe, o cronista se oferece para escrever uma biografia do estaleiro, que exige então três dias para contá-la e afirma que dirá “nada além da verdade”.",
+            "description": "Rothfuss conta história de Kvothe, dono da hospedaria Marco do Percurso - que leva uma vida pacata, em um vilarejo sem grandes agitações. Até o dia em que salva a vida de um cronista durante o ataque noturno de “criaturas sombrias” e o abriga em sua hospedaria.",
             "paragraphs": [
                 {
                     "id": 0,
@@ -235,7 +223,7 @@
         {
             "id": 3,
             "title": "Fevre Dream",
-            "description": "Fevre Dream conta a história de Abner Marsh, um barqueiro falido que recebe uma proposta de sociedade com Joshua York, um homem de hábitos estranhos. Joshua banca a construção do sonho de Abner, um barco chamado Fevre Dream para ser o vapor mais veloz do rio Mississipi. No entanto, os estranhos hábitos de Joshua levam Marsh a desconfiar de sua natureza.",
+            "description": "Fevre Dream conta a história de Abner Marsh, um barqueiro falido que recebe uma proposta de sociedade com Joshua York, que banca a construção de um barco chamado Fevre Dream para ser o vapor mais veloz do rio Mississipi. No entanto, os estranhos hábitos de Joshua levam Marsh a desconfiar de sua natureza.",
             "paragraphs": [
                 {
                     "id": 0,
