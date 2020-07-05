@@ -8,7 +8,7 @@ Como rodar o projeto:
 
 2. Para rodar é necessário rodar o comando "yarn server" no prompt de comando,que serve para acionar o servidor json-server.
 
-3. Em seguida rodar a aplicação com o comando yarn start,a aplicação irá rodar no browser no link http://localhost:3000
+3. Em seguida rodar a aplicação com o comando yarn start através do prompt de comando,a aplicação irá rodar no browser no link http://localhost:3000
 
 ##  Scripts
 ### `yarn `
