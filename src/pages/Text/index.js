@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
+import api from '../../services/api';
+
 import { ButtonCapsule, ChoiceButton } from './styles'
 import { Container } from '../../components/Container';
 import { TextCapsule } from '../../components/TextCapsule';
@@ -22,39 +24,50 @@ Modal.setAppElement('#root')
 let subtitle;
 
 class Text extends Component {
-
-
     state = {
         modalIsOpen: true,
-        text: this.props.location.state.texto,
+        textID: this.props.location.state.textID,
+        textTitle: this.props.location.state.textTitle,
+        text: {},
         currentParagraph_id: 0,
-        paragraphs: [
-            {
-                id: 0,
-                title: "Capítulo 1",
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam sem. Curabitur faucibus arcu et posuere facilisis. Nulla pulvinar efficitur sapien, eget pharetra velit vestibulum at. Nam pharetra, nibh sed gravida semper, nunc nulla consectetur nibh, sit amet luctus turpis mauris non nisi. ",
-                image: "",
-                option: [
-                    {
-                        id_paragraph: 5,
-                        name: "Correr"
-                    },
-                    {
-                        id_paragraph: 6,
-                        name: "Enfrentar"
-                    }
-                ]
-            },
-        ]
+        paragraphs: [],
+        loading: true
     }
 
     //  Lifecycle Hooks
-    componentDidMount() {
-        //  Pegar a Estória do LocalStorage
-        //  Se não estiver, Pega da API e guarda no LocalStorage
-        //  Se não encontrar, Retorna Erro
-        // console.log(this.props.location.state.texto);
+    async componentDidMount() {
+        const storedText = await localStorage.getItem(this.state.textTitle);
 
+        if(storedText)
+        {
+            const parsedText = JSON.parse(storedText)
+
+            this.setState({ 
+                text: parsedText, 
+                paragraphs: parsedText.paragraphs 
+            });
+        }
+        else
+        {            
+            const fetchedData = await api.get(`/textos/${this.state.textID}`);
+
+            if(fetchedData)
+            {
+                const fetchedText = fetchedData.data;
+
+                this.setState({ 
+                    text: fetchedText,
+                    paragraphs: fetchedText.paragraphs
+                });
+
+                localStorage.setItem(this.state.textTitle, JSON.stringify(fetchedText));
+            }
+        }
+
+        if(this.state.text)
+            this.setState({loading: false});
+        else   
+            console.log("Deu ruim");
     }
 
     openModal() {
@@ -72,48 +85,62 @@ class Text extends Component {
 
     //  Handlers
     choiceHandler(choice) {
+        const nextParagraphId = choice.id_paragraph;
+        const nextParagraph = this.state.paragraphs.find(p => p.id === nextParagraphId);
 
+        if(nextParagraph)
+        { this.setState({ currentParagraph_id: nextParagraphId }); }
     }
 
     render() {
         const { currentParagraph_id, paragraphs } = this.state;
-        const currentParagraph = paragraphs.find(p => p.id === currentParagraph_id);
-        const options = currentParagraph.option;
-        const { text } = this.state;
+        const currentParagraph = paragraphs?.find(p => p.id === currentParagraph_id);
+        const { textTitle } = this.state;
 
+        if (this.state.loading)
+        {
+            return(
+                <Container>
+                    <h1> LOADING </h1>
+                </Container>
+            );
+        }
+        
         return (
             <Container>
-                <TextCapsule>
-                    <h1>{text.titulo}</h1>
-                </TextCapsule>
+                    <TextCapsule>
+                        <h1>{ textTitle }</h1>
+                    </TextCapsule>
 
-                <TextCapsule>
-                    <h2>{currentParagraph.title}</h2>
-                    <p>
-                        {currentParagraph.content}
-                    </p>
-                </TextCapsule>
+                    <TextCapsule>
+                        { currentParagraph.title && <h2>{currentParagraph?.title}</h2>}
+                        <p>
+                            {currentParagraph?.content.split("\n").map((i,key) => {
+                                return <>{i}<br/> </>;
+                            })}
+                        </p>
+                    </TextCapsule>
 
-                <ButtonCapsule>
-                    <ChoiceButton onClick={() => this.choiceHandler(options[0])}>
-                        {options[0].name}
-                    </ChoiceButton>
-                    <ChoiceButton onClick={() => this.choiceHandler(options[1])}>
-                        {options[1].name}
-                    </ChoiceButton>
-                </ButtonCapsule>
+                    <ButtonCapsule>
+                        {currentParagraph?.option?.map(o =>
+                                {return (
+                                    <ChoiceButton onClick={() => this.choiceHandler(o)}>
+                                        {o?.name}
+                                    </ChoiceButton>
+                                )}
+                            )}
+                    </ButtonCapsule>
 
-                <Link to={'/list'}>Voltar à Lista de Livros</Link>
-                {/* <Modal
-                    isOpen={this.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
-                    onRequestClose={this.closeModal}
-                    style={customStyles}
-                    contentLabel="Example Modal"
-                >
-                    <h1>teste modal</h1>
-                </Modal> */}
-
+                    <Link to={'/list'}>Voltar à Lista de Livros</Link>
+                    {/* <Modal
+                        isOpen={this.modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+                        <h1>teste modal</h1>
+                    </Modal> */}
             </Container >
         );
     }
