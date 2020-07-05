@@ -10,6 +10,8 @@ export const ButtonCapsule = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
+    grid-template-columns: repeat(auto-fit, minmax(40%, 50%));
 `;
 
 export const ChoiceButton = styled.button`
@@ -20,7 +22,7 @@ export const ChoiceButton = styled.button`
     
     font-size: 25px;
 
-    width: 40%;
+    max-width: 40%;
     padding: 5px 25px;
 
     border: 1px solid #555;

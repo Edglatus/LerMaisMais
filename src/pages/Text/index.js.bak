@@ -1,0 +1,139 @@
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+
+
+import api from '../../services/api';
+import { ButtonCapsule, ChoiceButton, ImageContainer } from './styles'
+
+import { Container } from '../../components/Container';
+import { TextCapsule } from '../../components/TextCapsule';
+
+const customStyles = {
+    overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.75)'
+    },
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    },
+
+};
+
+Modal.setAppElement('#root');
+
+function Text({ location }) {
+    const [loading, setloading] = useState(true);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [text, setText] = useState();
+    const [paragraphs, setParagraphs] = useState([]);
+    const [currentParagraph, setParagraph] = useState();
+    const [textID] = useState(location.state.textID);
+    const [textTitle] = useState(location.state.textTitle);
+
+    
+    //  Lifecycle Hooks
+    useEffect(() => {
+        const fetchData = async () =>{
+            const fetchedData = await api.get(`/textos/${textID}`);
+            
+            if(fetchedData)
+            {
+                const fetchedText = fetchedData.data;
+            
+                setText(fetchedText);
+                setParagraphs(fetchedText.paragraphs);
+                
+                localStorage.setItem(textTitle, JSON.stringify(fetchedText));
+            }
+        }
+
+        const storedText = localStorage.getItem(textTitle);
+        
+        if(storedText)
+        {
+            const parsedText = JSON.parse(storedText)
+            
+            setText(parsedText);
+            setParagraphs(parsedText.paragraphs);
+        }
+        else
+        { fetchData(); }
+        
+        if(text)
+        {
+            setloading (false);
+            setParagraph(paragraphs[0]);
+        }
+        else   
+            console.log("Deu ruim");
+    }, [paragraphs, text, textID, textTitle]);
+    
+    //  Handlers
+    function openModal() {
+        setModalOpen(true);
+    }
+    function closeModal() {
+        setModalOpen(false);
+    }
+    
+    function choiceHandler(choice) {
+        const nextParagraphId = choice.id_paragraph;
+        const nextParagraph = paragraphs.find(p => p.id === nextParagraphId);
+
+        if(nextParagraph)
+        { setParagraph(nextParagraph); }
+    }
+
+    if (loading)
+    {
+        return(
+            <Container>
+                <h1> LOADING </h1>
+            </Container>
+        );
+    }
+    
+    return (
+        <Container>
+            <TextCapsule>
+                <h1>{ textTitle }</h1>
+            </TextCapsule>
+
+            <TextCapsule>
+                { currentParagraph.title && <h2>{currentParagraph?.title}</h2>}
+                <p>
+                    {currentParagraph?.content.split("\n").map((i,key) => {
+                        return <>{i}<br/> </>;
+                    })}
+                </p>
+            </TextCapsule>
+
+            <ButtonCapsule>
+                {currentParagraph?.option?.map(o =>
+                        {return (
+                            <ChoiceButton onClick={() => openModal()}>
+                                {o?.name}
+                            </ChoiceButton>
+                        )}
+                    )}
+            </ButtonCapsule>
+
+            <Link to={'/list'}>Voltar à Lista de Livros</Link>
+            <Modal
+                isOpen={modalOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+            > 
+                <ImageContainer><img src={currentParagraph.image} alt="none" /></ImageContainer>
+            </Modal>
+
+        </Container >
+    );
+}
+
+export default Text;
